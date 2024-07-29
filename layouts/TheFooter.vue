@@ -74,7 +74,7 @@
       </div>
       <div class="footer__bottom">
         <div class="footer__copyright">
-          <p>Copyright 2022 Avion LTD</p>
+          <p>Copyright 2024 Avion LTD</p>
         </div>
         <div class="footer__social">
           <NuxtLink class="footer__social-item">
