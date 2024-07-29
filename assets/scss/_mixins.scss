@@ -1,0 +1,45 @@
+@mixin button {
+  display: block;
+  margin: 0 auto;
+  width: 170px;
+  padding: 16px 32px;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  @include media(max, 451) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@mixin buttonLight {
+  color: $colorDarkViolet;
+  background-color: $colorLight;
+  transition: all .3s ease;
+  &:hover {
+    background-color: $colorGrey;
+  }
+}
+
+@mixin buttonDark {
+  color: $colorWhite;
+  background-color: $colorDarkViolet;
+  transition: all .3s ease;
+  &:hover {
+    background-color: $colorBlackViolet;
+  }
+}
+
+@mixin media($status, $size) {
+  @media screen and (#{$status}-width: #{$size}px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

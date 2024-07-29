@@ -1,0 +1,79 @@
+.content {
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "col1 col2";
+    min-height: 520px;
+    &--reverse {
+      grid-template-areas: "col2 col1";
+    }
+    @include media(max, 768) {
+      grid-template-columns: 1fr;
+      grid-template-areas: initial;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    grid-area: col1;
+    height: 100%;
+    padding: 72px 84px 54px 84px;
+    @include media(max, 768) {
+      align-items: center;
+      padding: 48px 24px;
+      grid-area: inherit;
+    }
+  }
+
+  &__description {
+    max-width: 530px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 32px;
+    @include media(max, 768) {
+      margin-bottom: 64px;
+    }
+
+    &-title {
+      margin-bottom: 25px;
+      font-size: 24px;
+      line-height: 140%;
+    }
+
+    &-text {
+      font-size: 16px;
+      color: $colorBlue;
+      p {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    &-link {
+      margin-top: auto;
+      margin-left: inherit;
+      text-align: center;
+    }
+  }
+  &__right {
+    position: relative;
+    overflow: hidden;
+    grid-area: col2;
+    @include media(max, 768) {
+      height: 384px;
+      grid-area: inherit;
+    }
+
+    &-img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

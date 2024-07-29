@@ -1,0 +1,49 @@
+.different {
+
+  &__title {
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: $fontClashDisplay;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 59px;
+    @include media(max, 991) {
+      flex-wrap: wrap;
+      row-gap: 36px;
+    }
+
+    &-item {
+      max-width: 270px;
+      width: 100%;
+      @include media(max, 991) {
+        max-width: calc(50% - 59px);
+      }
+      @include media(max, 551) {
+        max-width: 100%;
+      }
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+
+    &-title {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 140%;
+    }
+
+    &-description {
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+}

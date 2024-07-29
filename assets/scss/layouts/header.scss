@@ -1,0 +1,239 @@
+.header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $colorWhite;
+
+  &__container {
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 28px;
+    box-sizing: border-box;
+    @include media(max, 768) {
+      padding: 0 24px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &-name {
+      font-family: $fontClashDisplay;
+      font-weight: 400;
+      line-height: 125%;
+      font-size: 24px;
+      color: $colorBlackViolet;
+    }
+
+    &-left {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 50%;
+      @include media(max, 768) {
+        flex-direction: row-reverse;
+        width: 100%;
+        margin-right: 16px;
+      }
+    }
+
+    &-search {
+      width: 100%;
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    transition: transform .3s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__search {
+    position: relative;
+    width: 60%;
+    height: 30px;
+
+    &-button {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      transition: all .3s ease;
+      &:hover {
+        transform: translateY(-50%) scale(1.2);
+      }
+      &.active {
+        left: calc(100% - 26px);
+      }
+    }
+
+    &-input {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      padding: 3px 10px;
+      opacity: 0;
+      background-color: $colorGrey;
+      transition: width .3s ease, opacity .3s .1s ease;
+      &.active {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__burger {
+    position: relative;
+    display: none;
+    width: 16px;
+    height: 12px;
+    @include media(max, 768) {
+      display: block;
+    }
+    &.active {
+
+      span {
+        &:nth-child(1) {
+          top: 50%;
+          transform: rotate(45deg);
+          transition: top .15s, transform .2s .15s;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          top: 50%;
+          transform: rotate(-45deg);
+          transition: top .15s, transform .2s .15s;
+        }
+      }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $colorDarkViolet;
+      &:nth-child(1) {
+        transition: top .15s .2s, transform .2s;
+      }
+      &:nth-child(2) {
+        top: 50%;
+        transition: opacity .05s .15s;
+      }
+      &:nth-child(3) {
+        top: 100%;
+        transition: top .15s .2s, transform .2s;
+      }
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    @include media(max, 769) {
+      position: absolute;
+      left: 0;
+      top: 70px;
+      width: 100%;
+      height: 0;
+      overflow: auto;
+      background-color: $colorWhite;
+      transition: all .3s ease;
+      &.active {
+        height: 100vh;
+
+        .header__nav {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    transition: opacity .3s .1s ease;
+    @include media(max, 769) {
+      padding: 20px;
+      opacity: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 675px;
+    width: 100%;
+    @include media(max, 769) {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &-link {
+      position: relative;
+      font-family: $fontSatoshi;
+      font-weight: 400;
+      font-size: 16px;
+      color: $colorLightViolet;
+      @include hover() {
+        &:before {
+          transform: scale(1, 1);
+          transform-origin: left top;
+        }
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        height: 2px;
+        width: 100%;
+        transform: scale(0, 1);
+        transition: transform .4s ease;
+        background: $colorLightViolet;
+        transform-origin: right top;
+      }
+      @include media(max, 769) {
+        font-size: 26px;
+      }
+    }
+
+    &-line {
+
+    }
+  }
+}
+

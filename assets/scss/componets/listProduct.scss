@@ -1,0 +1,10 @@
+.product-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  @include media(max, 991) {
+    gap: 32px 16px;
+  }
+}

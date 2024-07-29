@@ -1,0 +1,55 @@
+body {
+  min-height: 100vh;
+  font-variant-ligatures: no-common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  position: relative;
+  font-family: $fontSatoshi;
+  font-size: 18px;
+  font-weight: 400;
+  color: $colorDarkViolet;
+  background-color: $colorWhite;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+
+  #__nuxt {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+
+main {
+  margin-top: 192px;
+  margin-bottom: auto;
+  @include media(max, 768) {
+    margin-top: 70px;
+  }
+}
+
+.container {
+  position: relative;
+  max-width: 1320px;
+  padding: 60px 24px;
+  margin: 0 auto;
+  @include media(max, 768) {
+    padding: 48px 24px;
+  }
+}
+
+.btn {
+  @include button;
+
+  &--light {
+    @include buttonLight;
+  }
+  &--dark {
+    @include buttonDark;
+  }
+}

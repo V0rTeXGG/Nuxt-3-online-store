@@ -1,0 +1,144 @@
+.product {
+  background-color: $colorLight;
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 32px;
+    max-width: 1170px;
+    min-height: 661px;
+    width: 100%;
+    @include media(max, 768) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &-container {
+      max-width: 607px;
+      width: 100%;
+      height: 661px;
+      overflow: hidden;
+      @include media(max, 551) {
+        width: 100vw;
+        height: inherit;
+      }
+    }
+  }
+
+  &__info {
+    padding: 30px 0;
+
+    &-top {
+      margin-bottom: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid $colorGrey;
+    }
+
+    &-subtitle {
+      margin-bottom: 14px;
+      font-size: 16px;
+    }
+
+    &-price {
+      font-size: 24px;
+    }
+
+    &-block {
+      margin-bottom: 36px;
+      &:last-of-type {
+        margin-bottom: 48px;
+      }
+    }
+
+    &-description {
+      max-width: 498px;
+      width: 100%;
+      font-size: 16px;
+    }
+    &-dimensions {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      max-width: 324px;
+      width: 100%;
+
+      &__item {
+        max-width: 93px;
+        width: 100%;
+        &:not(:last-child) {
+          border-right: 1px solid $colorGrey;
+        }
+      }
+
+      &__title {
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      &__value {
+        font-size: 16px;
+      }
+    }
+
+    &-counter {
+      @include media(max, 451) {
+        max-width: 100%;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 337px;
+      width: 100%;
+      @include media(max, 451) {
+        flex-direction: column;
+      }
+    }
+
+    &-button {
+      max-width: 143px;
+      width: 100%;
+      padding: 16px 32px;
+      font-size: 16px;
+      line-height: 150%;
+      text-align: center;
+      text-wrap: nowrap;
+      @include media(max, 451) {
+        max-width: 100%;
+      }
+
+      &.inactive {
+        opacity: .5;
+        pointer-events: none;
+      }
+
+      &--large {
+        max-width: 178px;
+        @include media(max, 451) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.offer {
+
+  &__title {
+    margin-bottom: 25px;
+    font-size: 32px;
+    line-height: 140%;
+  }
+
+  &__list {
+    margin-bottom: 35px;
+  }
+}

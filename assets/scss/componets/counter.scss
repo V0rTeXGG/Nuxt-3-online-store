@@ -1,0 +1,19 @@
+.counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 122px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: $colorLight;
+
+  &__input {
+    width: 30px;
+    text-align: center;
+  }
+
+  &__button {
+    font-size: 18px;
+    color: $colorBlue;
+  }
+}

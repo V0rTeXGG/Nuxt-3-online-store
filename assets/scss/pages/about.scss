@@ -1,0 +1,88 @@
+.top {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    max-width: 1284px;
+  }
+
+  &__title {
+    max-width: 704px;
+    width: 100%;
+    font-size: 36px;
+    line-height: 140%;
+  }
+
+  &__link {
+    max-width: 192px;
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 16px;
+    line-height: 150%;
+    text-wrap: nowrap;
+  }
+}
+
+.brand {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    min-height: 478px;
+    gap: 16px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 64px;
+    background-color: $colorDarkViolet;
+
+    &-title {
+      margin-bottom: 12px;
+      font-family: $fontClashDisplay;
+      font-size: 32px;
+      color: $colorWhite;
+    }
+
+    &-description {
+      margin-bottom: 56px;
+      font-size: 18px;
+      color: $colorWhite;
+    }
+
+    &-link {
+      max-width: 170px;
+      width: 100%;
+      height: 56px;
+      margin-top: auto;
+      padding: 16px 32px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: $colorWhite;
+      background-color: rgba(249, 249, 249, 0.15);
+      @include media(max, 451) {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__right {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+
+    &-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
