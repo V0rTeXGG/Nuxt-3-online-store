@@ -19,7 +19,7 @@
     height: 375px;
     margin-bottom: 24px;
     overflow: hidden;
-    &:hover {
+    @include hover() {
       .product-item__image {
         transform: scale(1.2);
       }

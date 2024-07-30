@@ -64,7 +64,7 @@
     width: 16px;
     height: 16px;
     transition: transform .3s ease;
-    &:hover {
+    @include hover() {
       transform: scale(1.2);
     }
   }
@@ -86,7 +86,7 @@
       left: 0;
       transform: translateY(-50%);
       transition: all .3s ease;
-      &:hover {
+      @include hover() {
         transform: translateY(-50%) scale(1.2);
       }
       &.active {
