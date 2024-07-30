@@ -97,7 +97,7 @@
         <div class="catalog__right">
           <h2 v-if="!pagination.totalPages" class="catalog__right-empty">No products</h2>
           <template v-else>
-<!--            <p v-if="productStore.searchValue" class="catalog__right-search">Search results by: {{productStore.searchValue}}</p>-->
+            <p v-if="searchValue" class="catalog__right-search">Search results by: {{searchValue}}</p>
             <ul class="catalog__list">
               <product-card class="catalog__list-item" v-for="p in products" :key="p.id" :item-info="p"/>
             </ul>
@@ -131,6 +131,7 @@ const pagination = ref({
 const isFilterActive = ref(false)
 const isLoaderFilters = ref(false)
 const isLoader = ref(true)
+const searchValue = ref('')
 
 const filterParameters = computed(() => {
   const params = [];
@@ -253,6 +254,7 @@ function handlerFilterActive() {
 watch(() => route.query.title, (newTitle) => {
   if (newTitle) {
     fetchFiltersProducts()
+    searchValue.value = productStore.searchValue
   }
 })
 

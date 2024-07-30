@@ -73,6 +73,7 @@
 
 <script setup>
 import {useProductStore} from '@/stores/products.js'
+const router = useRouter()
 
 const productStore = useProductStore()
 const {$api} = useNuxtApp()
@@ -98,12 +99,13 @@ const isFavorite = computed(() => {
 
 async function fetchProductData(id) {
   try {
-    const {data} = await $api.get('/products/' + id)
+    const { data: product } = await $api.get('/products/' + id)
     productData.value = {
-      ...data,
+      ...product,
       quantity: 1,
     }
   } catch (error) {
+    router.push('/404')
     console.log(error)
   }
 }
@@ -118,6 +120,7 @@ async function addToCart() {
       await $api.post('/cart', product)
       productStore.addedProductToCart(product)
     }
+
   } catch(error) {
     console.log(error)
   }

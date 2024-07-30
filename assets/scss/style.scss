@@ -1,10 +1,15 @@
-@import "reset";
-@import "mixins";
-@import "varibles";
-@import "fonts";
-@import "general";
-@import "typograph";
+// common
+@import "common/reset";
+@import "common/fonts";
+@import "common/typograph";
 
+// shared
+@import "shared/mixins";
+@import "shared/varibles";
+
+@import "general";
+
+// layouts
 @import "layouts/footer";
 @import "layouts/header";
 

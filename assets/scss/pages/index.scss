@@ -52,13 +52,12 @@
       color: $colorWhite;
       background-color: rgba(249, 249, 249, 0.15);
       transition: all .3s ease;
+      @include hover() {
+        background-color: rgba(249, 249, 249, 0.3);
+      }
       @include media(max, 451) {
         max-width: 100%;
         text-align: center;
-      }
-
-      &:hover {
-        background-color: rgba(249, 249, 249, 0.3);
       }
     }
 
