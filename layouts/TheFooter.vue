@@ -68,8 +68,13 @@
           </ul>
         </nav>
         <div class="footer__join">
-          <p class="footer__join-title">Join our mailing list</p>
-          <email-form :is-footer="true"/>
+          <template v-if="!subscribeStore.isSubscribe">
+            <p class="footer__join-title">Join our mailing list</p>
+            <email-form @email-sent="subscribeStore.handleSubscribe" :is-footer="true"/>
+          </template>
+          <template v-else>
+            <p class="footer__join-title footer__join-title--large">Thanks for subscribing</p>
+          </template>
         </div>
       </div>
       <div class="footer__bottom">
@@ -102,7 +107,9 @@
 </template>
 
 <script setup>
+import {useSubscribeStore} from '@/stores/subscribe.js'
 
+const subscribeStore = useSubscribeStore()
 </script>
 
 <style lang="scss" scoped>

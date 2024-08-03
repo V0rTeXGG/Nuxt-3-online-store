@@ -22,17 +22,25 @@ const prop = defineProps({
   }
 })
 
+const emit = defineEmits(['emailSent']);
+
 const isFocusInput = ref(false)
 const email = ref('')
 const isEmailError = ref(false)
 
+const isCheckEmail = computed(() => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email.value)
+})
+
 function submitForm() {
-  if(email.value) {
-    console.log(12)
+  if(isCheckEmail.value) {
+    emit('emailSent')
   } else {
     isEmailError.value = true
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

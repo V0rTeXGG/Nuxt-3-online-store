@@ -40,6 +40,9 @@
       margin-bottom: 25px;
       font-size: 24px;
       line-height: 140%;
+      &--large {
+        font-size: 48px;
+      }
     }
 
     &-text {
