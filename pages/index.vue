@@ -1,4 +1,8 @@
 <template>
+<!--  <Head>-->
+<!--    <Title>Avion product</Title>-->
+<!--    <Meta name="description" :content="productData.description"></Meta>-->
+<!--  </Head>-->
   <section class="about">
     <div class="container">
       <div class="about__container">
@@ -48,6 +52,7 @@ const content = {
   description: '<p>When we started Avion, the idea was simple. Make high quality furniture affordable and available for the mass market.</p>   <p>Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so our Chelsea boutique become the hotbed for the London interior design community.</p>',
   image: '/story.png',
 }
+
 async function fetchPopularProduct() {
   try {
     const {data} = await $api.get('/popular')

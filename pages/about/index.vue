@@ -36,6 +36,11 @@
 </template>
 
 <script setup>
+useHead({
+  title: 'Avion about page',
+  description: 'Page about'
+})
+
 const content = {
   title: '<span>Join the club and get the benefits</span>',
   description: '<p>Sign up for our newsletter and receive exclusive offers on new ranges, sales, pop up stores and more</p>',
@@ -43,6 +48,7 @@ const content = {
   reverse: true,
   form: true,
 }
+
 </script>
 
 <style lang="scss" scoped>
