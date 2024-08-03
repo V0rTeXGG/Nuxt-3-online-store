@@ -19,6 +19,10 @@ export const useProductStore = defineStore("productStore", () => {
         searchValue.value = value
     }
 
+    const clearSearchValue = () => {
+        searchValue.value = ''
+    }
+
     const fetchCartProduct = async () => {
         try {
             if(!cartProducts.value.length) {
@@ -68,6 +72,7 @@ export const useProductStore = defineStore("productStore", () => {
         totalPriceCart,
         searchValueOptions,
         setSearchValue,
+        clearSearchValue,
         fetchRecommendationProducts,
         fetchCartProduct,
         fetchFavoriteProduct,

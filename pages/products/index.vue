@@ -11,8 +11,7 @@
         <button @click="handlerFilterActive" class="catalog__filter-btn btn">Filters</button>
         <div :class="{active: isFilterActive}" class="catalog__filter">
           <button @click="handlerFilterActive" class="catalog__filter-close"></button>
-          <div
-              class="catalog__filter-block">
+          <div class="catalog__filter-block">
             <div class="catalog__filter-block__top">
               <p class="catalog__filter-title">Product type</p>
             </div>
@@ -38,10 +37,8 @@
               </div>
             </div>
           </div>
-          <div
-              class="catalog__filter-block">
-            <div
-                class="catalog__filter-block__top">
+          <div class="catalog__filter-block">
+            <div class="catalog__filter-block__top">
               <p class="catalog__filter-title">Price</p>
             </div>
             <div class="catalog__filter-container">
@@ -64,10 +61,8 @@
               </div>
             </div>
           </div>
-          <div
-              class="catalog__filter-block">
-            <div
-                class="catalog__filter-block__top">
+          <div class="catalog__filter-block">
+            <div class="catalog__filter-block__top">
               <p class="catalog__filter-title">Designer</p>
             </div>
 
@@ -93,9 +88,14 @@
               </div>
             </div>
           </div>
+          <div class="catalog__filter-block">
+            <div class="catalog__filter-block__top">
+              <button @click="clearFilters" class="btn btn--dark">Clear filters</button>
+            </div>
+          </div>
         </div>
         <div class="catalog__right">
-          <h2 v-if="!pagination.totalPages" class="catalog__right-empty">No products</h2>
+          <h2 v-if="!pagination.totalPages" class="catalog__right-empty">Products not found by request: {{searchValue}}</h2>
           <template v-else>
             <p v-if="searchValue" class="catalog__right-search">Search results by: {{searchValue}}</p>
             <ul class="catalog__list">
@@ -236,6 +236,22 @@ async function fetchFiltersProducts() {
   }
 }
 
+async function clearFilters() {
+  try {
+    Object.keys(filter.value).forEach(key => {
+      if (Array.isArray(filter.value[key])) {
+        filter.value[key] = []
+      } else {
+        filter.value[key] = ''
+      }
+    })
+    productStore.clearSearchValue()
+    fetchProducts()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 function loadMore() {
   if (pagination.value.currentPage < pagination.value.totalPages) {
     pagination.value.currentPage++
@@ -251,11 +267,9 @@ function handlerFilterActive() {
   document.body.classList.toggle('no-scroll');
 }
 
-watch(() => route.query.title, (newTitle) => {
-  if (newTitle) {
-    fetchFiltersProducts()
-    searchValue.value = productStore.searchValue
-  }
+watch(() => route.query.title, () => {
+  fetchFiltersProducts()
+  searchValue.value = productStore.searchValue
 })
 
 onMounted( async () => {

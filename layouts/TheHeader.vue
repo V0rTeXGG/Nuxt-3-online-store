@@ -6,7 +6,8 @@
           <div class="header__search">
             <button
                 @click="openSearch(); searchProduct()"
-                :class="{active: isSearchActive}"
+                :class="{'header__search-button--active': isSearchActive, 'header__search-button--disabled': isSearchActive && !productStore.searchValue}"
+                :disabled="isSearchActive && !productStore.searchValue"
                 ref="searchButton"
                 class="header__button header__search-button" >
               <svg-icon name="search" class="header__icon"/>
@@ -77,7 +78,6 @@
 import {useProductStore} from '@/stores/products.js'
 
 const productStore = useProductStore()
-const {$api} = useNuxtApp()
 const router = useRouter()
 const route = useRoute()
 
