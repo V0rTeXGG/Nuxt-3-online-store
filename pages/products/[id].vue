@@ -1,5 +1,8 @@
 <template>
-
+  <Head>
+    <Title>Avion product {{productData.title}}</Title>
+    <Meta name="description" :content="productData.description"></Meta>
+  </Head>
   <section  class="product">
     <div class="container">
       <div class="product__container">

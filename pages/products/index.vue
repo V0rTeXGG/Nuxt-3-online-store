@@ -112,6 +112,11 @@
 <script setup>
 import {useProductStore} from '@/stores/products.js'
 
+useHead({
+  title: 'Avion products',
+  description: 'Page products'
+})
+
 const {$api} = useNuxtApp()
 const router = useRouter()
 const route = useRoute()

@@ -63,6 +63,11 @@
 <script setup>
 import {useProductStore} from '@/stores/products.js'
 
+useHead({
+  title: 'Avion cart',
+  description: 'Page cart'
+})
+
 const {$api} = useNuxtApp()
 const productStore = useProductStore()
 const isLoader = ref(true)
