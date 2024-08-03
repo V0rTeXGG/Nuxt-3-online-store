@@ -277,7 +277,9 @@ onMounted( async () => {
     setFiltersFromRouteParams();
     fetchFilters();
     fetchProducts();
-    console.log(filterParameters.value.length)
+    if(route.query.title) {
+      searchValue.value = productStore.searchValue
+    }
   } catch (error) {
     console.log(error)
   } finally {
