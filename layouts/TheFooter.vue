@@ -68,13 +68,17 @@
           </ul>
         </nav>
         <div class="footer__join">
-          <template v-if="!subscribeStore.isSubscribe">
-            <p class="footer__join-title">Join our mailing list</p>
-            <email-form @email-sent="subscribeStore.handleSubscribe" :is-footer="true"/>
-          </template>
-          <template v-else>
-            <p class="footer__join-title footer__join-title--large">Thanks for subscribing</p>
-          </template>
+          <transition name="slide-up" mode="out-in">
+            <template v-if="!subscribeStore.isSubscribe">
+              <div key="form">
+                <p class="footer__join-title">Join our mailing list</p>
+                <email-form @email-sent="subscribeStore.handleSubscribe" :is-footer="true"/>
+              </div>
+            </template>
+            <template v-else>
+              <p class="footer__join-title footer__join-title--large">Thanks for subscribing</p>
+            </template>
+          </transition>
         </div>
       </div>
       <div class="footer__bottom">
@@ -113,5 +117,18 @@ const subscribeStore = useSubscribeStore()
 </script>
 
 <style lang="scss" scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
 
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
 </style>
