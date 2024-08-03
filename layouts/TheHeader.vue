@@ -3,7 +3,8 @@
     <div class="header__container">
       <div class="header__top">
         <div class="header__top-left">
-          <div class="header__search">
+          <div
+              :class="{'header__search--active': isSearchActive}" class="header__search">
             <button
                 @click="openSearch(); searchProduct()"
                 :class="{'header__search-button--active': isSearchActive, 'header__search-button--disabled': isSearchActive && !productStore.searchValue}"
@@ -16,7 +17,7 @@
                 v-model="productStore.searchValue"
                 @focusout="closeSearch"
                 @keydown.enter="searchProduct()"
-                :class="{active: isSearchActive}"
+                :class="{'header__search-input--active': isSearchActive}"
                 ref="search"
                 type="search"
                 class="header__search-input">

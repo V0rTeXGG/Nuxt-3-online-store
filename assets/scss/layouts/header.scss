@@ -38,7 +38,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 50%;
+      width: 52.5%;
+      @include media(max, 1200) {
+        width: 53%;
+      }
       @include media(max, 768) {
         flex-direction: row-reverse;
         width: 100%;
@@ -76,14 +79,21 @@
 
   &__search {
     position: relative;
-    width: 60%;
+    width: 20px;
     height: 30px;
+    transition: all .3s ease;
+    &--active {
+      width: 60%;
+      @include media(max, 768) {
+        width: 80%;
+      }
+    }
 
     &-button {
       z-index: 2;
       position: absolute;
       top: 50%;
-      left: 0;
+      left: calc(100% - 16px);
       transform: translateY(-50%);
       transition: all .3s ease;
       @include hover() {
@@ -104,13 +114,12 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      padding: 3px 10px;
+      width: 100%;
+      padding: 3px 29px 3px 10px;
       opacity: 0;
       background-color: $colorGrey;
       transition: width .3s ease, opacity .3s .1s ease;
-      &.active {
-        width: 100%;
+      &--active {
         opacity: 1;
       }
     }
@@ -166,7 +175,7 @@
 
   &__bottom {
     width: 100%;
-    @include media(max, 769) {
+    @include media(max, 768) {
       position: absolute;
       left: 0;
       top: 70px;
@@ -190,7 +199,7 @@
     justify-content: center;
     padding: 20px 0;
     transition: opacity .3s .1s ease;
-    @include media(max, 769) {
+    @include media(max, 768) {
       padding: 20px;
       opacity: 0;
     }
@@ -202,7 +211,7 @@
     align-items: center;
     max-width: 675px;
     width: 100%;
-    @include media(max, 769) {
+    @include media(max, 768) {
       flex-direction: column;
       gap: 20px;
     }
@@ -231,7 +240,7 @@
         background: $colorLightViolet;
         transform-origin: right top;
       }
-      @include media(max, 769) {
+      @include media(max, 768) {
         font-size: 26px;
       }
     }
