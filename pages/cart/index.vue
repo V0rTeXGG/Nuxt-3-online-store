@@ -51,17 +51,52 @@
                 <span class="cart__price">£{{productStore.totalPriceCart}}</span>
               </div>
               <p class="cart__postword">Taxes and shipping are calculated at checkout</p>
-              <button type="button" class="cart__button btn--dark">Go to checkout</button>
+              <button @click="openModalOrder" type="button" class="cart__button btn--dark">Go to checkout</button>
             </div>
           </template>
         </template>
       </div>
     </div>
   </section>
+  <the-modal :is-visible="isModalVisible" @close-modal="isModalVisible = false">
+    <transition name="fade" mode="out-in">
+        <div v-if="!isCreateOrder" class="modal__container">
+          <p class="modal__title">Order products:</p>
+          <ul class="modal__list">
+            <li
+                v-for="item in productStore.cartProducts"
+                :key="item.id"
+                class="modal__products">
+              <div class="modal__products-main">
+                <img :src="`${item.image}`" alt="products image" class="modal__products-image">
+                <div class="modal__products-info">
+                  <p class="modal__products-title">{{item.title}}</p>
+                  <p class="modal__products-description">{{item.description}}</p>
+                  <p class="modal__products-label">Quantity: {{item.quantity}}</p>
+                  <p class="modal__products-label">Price: £{{item.totalPrice}}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="modal__bottom">
+            <div class="modal__bottom-block">
+              <span class="modal__bottom-label">Total price: </span>
+              <span class="modal__bottom-price">£{{productStore.totalPriceCart}}</span>
+            </div>
+            <button @click="createOrder" class="modal__bottom-button btn--dark">Create order</button>
+          </div>
+        </div>
+      <div v-else class="modal__container">
+        <p class="modal__title--thanks">Thanks for order!</p>
+      </div>
+    </transition>
+
+  </the-modal>
 </template>
 
 <script setup>
 import {useProductStore} from '@/stores/products.js'
+import TheModal from "~/layouts/TheModal.vue";
 
 useHead({
   title: 'Avion cart',
@@ -71,9 +106,28 @@ useHead({
 const {$api} = useNuxtApp()
 const productStore = useProductStore()
 const isLoader = ref(true)
+const isCreateOrder = ref(false)
+const isModalVisible = ref(false)
 
 function countProductPrice(item) {
   item.totalPrice = item.price * item.quantity
+}
+
+function openModalOrder() {
+  isModalVisible.value = true
+}
+
+async function createOrder() {
+  try {
+    const order = {
+      products: productStore.cartProducts,
+    }
+    await $api.post('/orders', order)
+    productStore.clearCart()
+    isCreateOrder.value = true
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 onMounted(async () => {
@@ -88,5 +142,18 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.25s ease;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
 
 </style>

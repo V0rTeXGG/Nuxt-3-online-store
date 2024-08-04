@@ -64,6 +64,10 @@ export const useProductStore = defineStore("productStore", () => {
         })
     }
 
+    const clearCart =  () => {
+        cartProducts.value = []
+    }
+
     return {
         cartProducts,
         recommendationProducts,
@@ -76,6 +80,7 @@ export const useProductStore = defineStore("productStore", () => {
         fetchRecommendationProducts,
         fetchCartProduct,
         fetchFavoriteProduct,
-        addedProductToCart
+        addedProductToCart,
+        clearCart
     };
 })
