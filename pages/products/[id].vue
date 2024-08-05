@@ -147,10 +147,12 @@ async function addToFavorite() {
 
 onMounted(async () => {
   try {
-    await fetchProductData(id)
-    await productStore.fetchRecommendationProducts()
-    await productStore.fetchCartProduct()
-    await productStore.fetchFavoriteProduct()
+    await Promise.all([
+      fetchProductData(id),
+      productStore.fetchRecommendationProducts(),
+      productStore.fetchCartProduct(),
+      productStore.fetchFavoriteProduct(),
+    ])
   } catch (error) {
     console.log(error)
   } finally {

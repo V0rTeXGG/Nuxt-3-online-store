@@ -279,9 +279,11 @@ watch(() => route.query.title, () => {
 
 onMounted( async () => {
   try {
-    setFiltersFromRouteParams();
-    fetchFilters();
-    fetchProducts();
+    await Promise.all( [
+      setFiltersFromRouteParams(),
+      fetchFilters(),
+      fetchProducts(),
+    ])
     if(route.query.title) {
       searchValue.value = productStore.searchValue
     }
